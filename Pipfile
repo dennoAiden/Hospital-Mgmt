@@ -4,13 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask-cors = "==5.0.0"
+flask-cors = "*"
 faker = "==28.4.1"
 sqlalchemy = "==2.0.29"
 sqlalchemy-serializer = "==1.4.22"
 flask = "==3.0.3"
 flask-migrate = "==4.0.7"
-flask-bcrypt = "==1.0.1"
+flask-bcrypt = "*"
 flask-restful = "==0.3.10"
 flask-sqlalchemy = "==3.1.1"
 gunicorn = "==23.0.0"
