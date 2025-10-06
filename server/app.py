@@ -35,10 +35,14 @@ CORS(app)
 
 db.init_app(app)
 
+@app.route('/')
+def home():
+    return jsonify({"message": "Hospital Management API is running successfully 🚀"})
+
 
 @app.errorhandler(404)
 def not_found(e):
-    return render_template("message": "Hospital Management API is running successfully 🚀")
+    return render_template("index.html")
 
 class Images(Resource):
     def get(self):
