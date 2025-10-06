@@ -36,7 +36,7 @@ const Departments = () => {
             <div key={department.id} className="department-item">
               <Link to={`/departments/${department.id}`}>
                 <img
-                  src={`${API_URL}api/images?model=department&filename=${department.image}`} 
+                  src={`${API_URL}/api/images?model=department&filename=${department.image}`} 
                   alt={department.name}
                   onError={(e) => {
                     e.target.onerror = null; 
