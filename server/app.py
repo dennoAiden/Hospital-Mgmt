@@ -29,6 +29,7 @@ frontend_origin = os.getenv("FRONTEND_ORIGIN", "*")
 app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SESSION_COOKIE_SECURE'] = True
+app.config['SESSION_COOKIE_SAMESITE'] = 'None'
 app.json.compact = False
 
 frontend_origin = os.getenv("FRONTEND_ORIGIN", "https://hospital-mgmt-frontend.onrender.com")
