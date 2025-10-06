@@ -9,6 +9,8 @@ const DoctorDashboard = () => {
   const { user } = useAuth();
   console.log(user);
   
+  const API_URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     fetch(`${API_URL}/api/doctor/${user.id}`)
       .then((response) => {

@@ -9,6 +9,8 @@ const Departments = () => {
   
   // Set the base URL for the images API using the proxy
   const API_BASE_URL = '/api/images'; // Use the proxied path
+  const API_URL = process.env.REACT_APP_API_URL;
+
 
   useEffect(() => {
     fetch(`${API_URL}/api/departments`)
