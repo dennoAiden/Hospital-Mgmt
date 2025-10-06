@@ -5,10 +5,12 @@ const PatientDetails = () => {
   const [patient, setPatient] = useState(null); // Set initial state to null
   const [error, setError] = useState('');
   const { user } = useAuth();
+  const API_URL = process.env.REACT_APP_API_URL 
+
 
   useEffect(() => {
     if (user) {
-      fetch(`/api/patient/${user.id}`)
+      fetch(`${API_URL}/api/patient/${user.id}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
