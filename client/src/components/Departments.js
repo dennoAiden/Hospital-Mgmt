@@ -9,7 +9,7 @@ const Departments = () => {
 
   // ✅ Use environment variable for backend base URL
   // Example: REACT_APP_API_URL=https://hospital-mgmt-backend.onrender.com
-  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+  const API_URL = process.env.REACT_APP_API_URL
 
   useEffect(() => {
     // Fetch department data from backend
@@ -36,7 +36,7 @@ const Departments = () => {
             <div key={department.id} className="department-item">
               <Link to={`/departments/${department.id}`}>
                 <img
-                  src={`${API_URL}/images?model=department&filename=${department.image}`} 
+                  src={`${API_URL}api/images?model=department&filename=${department.image}`} 
                   alt={department.name}
                   onError={(e) => {
                     e.target.onerror = null; 

@@ -9,7 +9,7 @@ const DoctorsByDepartment = () => {
   const [error, setError] = useState(null);
 
   // ✅ Load from backend (Render or local)
-  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+  const API_URL = process.env.REACT_APP_API_URL 
 
   useEffect(() => {
     fetch(`${API_URL}/api/departments/${departmentId}`)
@@ -40,7 +40,7 @@ const DoctorsByDepartment = () => {
               <div key={doctor.id} className="doctor-card">
                 <Link to={`/doctors/${doctor.id}`}>
                   <img
-                    src={`${API_URL}/images?model=doctor&filename=${doctor.image}`} 
+                    src={`${API_URL}/api/images?model=doctor&filename=${doctor.image}`} 
                     alt={`Dr. ${doctor.first_name} ${doctor.last_name}`}
                     onError={(e) => {
                       e.target.onerror = null;

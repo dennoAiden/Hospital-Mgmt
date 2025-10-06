@@ -11,6 +11,8 @@ const DoctorProfile = () => {
   const navigate = useNavigate();
   const [showAppointmentForm, setShowAppointmentForm] = useState(false); 
   const API_URL = process.env.REACT_APP_API_URL;
+  const imageUrl = `${API_URL}/api/images?model=doctor&filename=${doctor.image}`;
+
 
 
 
@@ -37,7 +39,6 @@ const DoctorProfile = () => {
     return <p>Loading doctor profile...</p>;
   }
 
-  const imageUrl = `${API_URL}/images?model=doctor&filename=${doctor.image}`;
 
   return (
     <div>
