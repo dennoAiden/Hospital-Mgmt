@@ -6,7 +6,8 @@ function DoctorsPatients() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useAuth();
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = process.env.REACT_APP_API_URL;
+
 
 
   // Debugging logs to check user data and patients data

@@ -11,7 +11,8 @@ function PatientSignup() {
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
     const [messageType, setMessageType] = useState(''); // "success" or "error"
-    const API_URL = import.meta.env.VITE_API_URL;
+    const API_URL = process.env.REACT_APP_API_URL;
+
 
 
     const passRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;

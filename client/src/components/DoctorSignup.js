@@ -9,7 +9,8 @@ function DoctorSignup() {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
-    const API_URL = import.meta.env.VITE_API_URL;
+    const API_URL = process.env.REACT_APP_API_URL;
+
     const [departments, setDepartments] = useState([]);
     console.log(departments);
 
