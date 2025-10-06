@@ -38,7 +38,7 @@ db.init_app(app)
 
 @app.errorhandler(404)
 def not_found(e):
-    return render_template("index.html")
+    return render_template("message": "Hospital Management API is running successfully 🚀")
 
 class Images(Resource):
     def get(self):
