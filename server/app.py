@@ -34,7 +34,7 @@ app.json.compact = False
 migrate = Migrate(app, db)
 api = Api(app)
 bcrypt = Bcrypt(app)
-CORS(app,origins=[frontend_origin])
+CORS(app,supports_credentials=True,origins=[frontend_origin])
 
 db.init_app(app)
 
