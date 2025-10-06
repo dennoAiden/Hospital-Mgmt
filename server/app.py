@@ -48,7 +48,11 @@ def home():
 
 @app.errorhandler(404)
 def not_found(e):
+    # Only serve index.html for frontend routes
+    if request.path.startswith('/api/'):
+        return jsonify({"error": "Not Found"}), 404
     return render_template("index.html")
+
 
 class Images(Resource):
     def get(self):
@@ -99,6 +103,7 @@ class DoctorSignup(Resource):
         if image:
             filename = secure_filename(image.filename)
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            image.save(image_path)
         else:
             image_path = None
             
@@ -112,7 +117,7 @@ class DoctorSignup(Resource):
             education=data.get('education'),
             certifications=data.get('certifications'),
             specialty=data.get('specialty'),
-            image=image_path,
+            image=filename,
             department_id=data.get('department'),
             password=bcrypt.generate_password_hash(data.get('password')).decode('utf-8')
         )
