@@ -5,6 +5,8 @@ import Gallery from './Gallery';
 import InfoCards from './InfoCards';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const images = [
     { url: 'https://img.freepik.com/free-photo/african-american-doctor-patient-doing-consultation_482257-20161.jpg?semt=ais_hybrid', alt: 'xray' },
@@ -18,6 +20,7 @@ function App() {
     return (
         <>
             <Navbar user={user} setUser={setUser} />
+            <ToastContainer position="top-center" autoClose={3000} />
             <div className='App'>
                 <Gallery images={images} />
                 <InfoCards />

@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useAuth } from './AuthContext';
+import { toast } from 'react-toastify';
+
 
 const BookAppointment = () => {
     const { doctorId } = useParams();
@@ -43,17 +45,20 @@ const BookAppointment = () => {
                 });
 
                 if (response.ok) {
-                    alert('Appointment booked successfully!');
-                    resetForm();
-                    navigate(-1);
-                } else {
-                    const errorData = await response.json();
-                    alert(`Failed to book appointment: ${errorData.error || 'Please try again.'}`);
+                   toast.success('Appointment booked successfully!');
+                   resetForm();
+                   navigate(-1);
+                } 
+                   else
+                {
+                   const errorData = await response.json();
+                   toast.error(`Failed to book appointment: ${errorData.error || 'Please try again.'}`);
                 }
-            } catch (error) {
-                alert('An error occurred while booking the appointment. Please try again.');
-                console.error('Error:', error);
-            }
+                } catch (error) 
+                {
+                   toast.error('An unexpected error occurred. Please try again.');
+                   console.error('Error:', error);
+                }
         },
     });
 
