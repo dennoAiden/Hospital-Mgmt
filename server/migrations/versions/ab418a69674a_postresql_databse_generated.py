@@ -1,8 +1,8 @@
-"""initial migration
+""" postresql databse generated
 
-Revision ID: eb5a40e0978c
+Revision ID: ab418a69674a
 Revises: 
-Create Date: 2024-12-24 22:01:45.136558
+Create Date: 2025-10-06 09:14:30.751567
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'eb5a40e0978c'
+revision = 'ab418a69674a'
 down_revision = None
 branch_labels = None
 depends_on = None
