@@ -37,7 +37,7 @@ const DoctorProfile = () => {
     return <p>Loading doctor profile...</p>;
   }
 
-  const imageUrl = `/api/images?model=doctor&filename=${doctor.image}`;
+  const imageUrl = `${API_URL}/images?model=doctor&filename=${doctor.image}`;
 
   return (
     <div>

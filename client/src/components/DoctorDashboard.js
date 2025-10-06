@@ -12,7 +12,7 @@ const DoctorDashboard = () => {
   const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
-    fetch(`${API_URL}/api/doctor/${user.id}`)
+    fetch(`${API_URL}/doctor/${user.id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

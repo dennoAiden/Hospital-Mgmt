@@ -6,13 +6,13 @@ import Footer from './Footer';
 const Departments = () => {
   const [departments, setDepartments] = useState([]);
   const [error, setError] = useState(null);
-  
-  // Set the base URL for the images API using the proxy
-  const API_BASE_URL = '/api/images'; // Use the proxied path
-  const API_URL = process.env.REACT_APP_API_URL;
 
+  // ✅ Use environment variable for backend base URL
+  // Example: REACT_APP_API_URL=https://hospital-mgmt-backend.onrender.com
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
   useEffect(() => {
+    // Fetch department data from backend
     fetch(`${API_URL}/api/departments`)
       .then(response => {
         if (!response.ok) {
@@ -22,32 +22,33 @@ const Departments = () => {
       })
       .then(data => setDepartments(data))
       .catch(error => setError('Error fetching departments: ' + error.message));
-  }, []);
+  }, [API_URL]);
 
   return (
     <div>
       <Navbar />
       <div className='department-section'>
-      <h1>Hospital Departments</h1>
-      {error && <p>{error}</p>}
-      <div className="departments-grid">
-        {departments.map(department => (
-          <div key={department.id} className="department-item">
-            <Link to={`/departments/${department.id}`}>
-              <img 
-                src={`${API_BASE_URL}?model=department&filename=${department.image}`} // Construct the image URL using the proxied path
-                alt={department.name} 
-                onError={(e) => { 
-                  e.target.onerror = null; // Prevents looping
-                  e.target.src = '/path/to/fallback_image.jpg'; // Path to fallback image
-                }} 
-              />
-              <h3>{department.name}</h3>
-              <p>{department.description}</p>
-            </Link>
-          </div>
-        ))}
-      </div>
+        <h1>Hospital Departments</h1>
+        {error && <p>{error}</p>}
+
+        <div className="departments-grid">
+          {departments.map(department => (
+            <div key={department.id} className="department-item">
+              <Link to={`/departments/${department.id}`}>
+                <img
+                  src={`${API_URL}/images?model=department&filename=${department.image}`} 
+                  alt={department.name}
+                  onError={(e) => {
+                    e.target.onerror = null; 
+                    e.target.src = '/fallback_image.jpg'; // fallback image in /public folder
+                  }}
+                />
+                <h3>{department.name}</h3>
+                <p>{department.description}</p>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
       <Footer />
     </div>

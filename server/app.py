@@ -99,7 +99,6 @@ class DoctorSignup(Resource):
         if image:
             filename = secure_filename(image.filename)
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            image.save(image_path)
         else:
             image_path = None
             
