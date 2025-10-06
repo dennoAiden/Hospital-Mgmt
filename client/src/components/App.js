@@ -20,8 +20,8 @@ function App() {
     return (
         <>
             <Navbar user={user} setUser={setUser} />
-            <ToastContainer position="top-center" autoClose={3000} />
             <div className='App'>
+                <ToastContainer position="top-center" autoClose={3000} />
                 <Gallery images={images} />
                 <InfoCards />
             </div>
