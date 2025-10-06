@@ -4,23 +4,24 @@ import Navbar from './Navbar';
 import { useAuth } from './AuthContext';
 import BookAppointment from './BookAppointment';
 
-const DoctorProfile = () => {
+const DoctorProfile = ({ doctor: passedDoctor }) => {
   const { doctorId } = useParams();
-  const [doctor, setDoctor] = useState(null);
+  const [doctor, setDoctor] = useState(passedDoctor || null);
   const { user } = useAuth();
   const navigate = useNavigate();
   const [showAppointmentForm, setShowAppointmentForm] = useState(false); 
   const API_URL = process.env.REACT_APP_API_URL;
-  const imageUrl = `${API_URL}/api/images?model=doctor&filename=${doctor.image}`;
 
 
 
 
   useEffect(() => {
+    if (!passedDoctor && doctorId) {
     fetch(`${API_URL}/api/doctors/${doctorId}`)
       .then(response => response.json())
       .then(data => setDoctor(data))
       .catch(error => console.error('Error fetching doctor profile:', error));
+    }
   }, [doctorId]);
 
   const handleBookAppointment = () => {
@@ -38,6 +39,7 @@ const DoctorProfile = () => {
   if (!doctor) {
     return <p>Loading doctor profile...</p>;
   }
+  const imageUrl = `${API_URL}/api/images?model=doctor&filename=${doctor.image}`;
 
 
   return (
