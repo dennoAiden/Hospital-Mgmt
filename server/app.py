@@ -31,6 +31,8 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SESSION_COOKIE_SECURE'] = True
 app.json.compact = False
 
+frontend_origin = os.getenv("FRONTEND_ORIGIN", "https://hospital-mgmt-frontend.onrender.com")
+
 migrate = Migrate(app, db)
 api = Api(app)
 bcrypt = Bcrypt(app)
