@@ -5,7 +5,7 @@ from flask_restful import Api, Resource
 from flask_cors import CORS
 import datetime
 
-from models import db, Doctor, Department, Patient, Appointment
+from server.models import db, Doctor, Department, Patient, Appointment
 from werkzeug.utils import secure_filename
 import os
 
