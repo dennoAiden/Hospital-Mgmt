@@ -11,7 +11,7 @@ const Departments = () => {
   const API_BASE_URL = '/api/images'; // Use the proxied path
 
   useEffect(() => {
-    fetch('/api/departments')
+    fetch(`${API_URL}/api/departments`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

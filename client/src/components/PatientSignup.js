@@ -11,6 +11,8 @@ function PatientSignup() {
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
     const [messageType, setMessageType] = useState(''); // "success" or "error"
+    const API_URL = import.meta.env.VITE_API_URL;
+
 
     const passRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
@@ -48,7 +50,7 @@ function PatientSignup() {
         onSubmit: async (values, actions) => {
             setLoading(true);
             try {
-                const response = await fetch('/api/patientsignup', {
+                const response = await fetch(`${API_URL}/api/patientsignup`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

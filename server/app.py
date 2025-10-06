@@ -11,6 +11,8 @@ import os
 
 from dotenv import load_dotenv
 load_dotenv()
+frontend_origin = os.getenv("FRONTEND_ORIGIN", "*")
+
 
 app = Flask(
     __name__,
@@ -23,6 +25,7 @@ UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'images
 app.config['SECRET_KEY'] = os.urandom(24)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+frontend_origin = os.getenv("FRONTEND_ORIGIN", "*")
 app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SESSION_COOKIE_SECURE'] = True
@@ -31,7 +34,7 @@ app.json.compact = False
 migrate = Migrate(app, db)
 api = Api(app)
 bcrypt = Bcrypt(app)
-CORS(app)
+CORS(app,origins=[frontend_origin])
 
 db.init_app(app)
 

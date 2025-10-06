@@ -6,6 +6,8 @@ function DoctorsPatients() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useAuth();
+  const API_URL = import.meta.env.VITE_API_URL;
+
 
   // Debugging logs to check user data and patients data
   console.log("Logged in user:", user);
@@ -15,7 +17,7 @@ function DoctorsPatients() {
     if (user && user.id) {
       const fetchPatients = async () => {
         try {
-          const response = await fetch(`/api/patients/doctor/${user.id}`);
+          const response = await fetch(`${API_URL}/api/patients/doctor/${user.id}`);
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }

@@ -8,6 +8,8 @@ const BookAppointment = () => {
     const { doctorId } = useParams();
     const navigate = useNavigate();
     const { user, loading } = useAuth();
+    const API_URL = import.meta.env.VITE_API_URL;
+
 
     const validationSchema = yup.object().shape({
         date: yup.string().required('Date is required'),
@@ -30,7 +32,7 @@ const BookAppointment = () => {
             };
 
             try {
-                const response = await fetch('/api/appointments/book', {
+                const response = await fetch(`${API_URL}/api/appointments/book`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

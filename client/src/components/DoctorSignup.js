@@ -9,6 +9,7 @@ function DoctorSignup() {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
+    const API_URL = import.meta.env.VITE_API_URL;
     const [departments, setDepartments] = useState([]);
     console.log(departments);
 
@@ -64,7 +65,7 @@ function DoctorSignup() {
             }
 
             try {
-                const response = await fetch('/api/doctorsignup', {
+                const response = await fetch(`${API_URL}/api/doctorsignup`, {
                     method: 'POST',
                     body: formData,  // Send FormData (including image)
                 });
@@ -90,7 +91,7 @@ function DoctorSignup() {
     useEffect(() => {
         const fetchDepartments = async () => {
             try {
-                const response = await fetch('/api/departments'); 
+                const response = await fetch(`${API_URL}/api/departments`); 
                 if (!response.ok) {
                     throw new Error('Failed to fetch departments');
                 }

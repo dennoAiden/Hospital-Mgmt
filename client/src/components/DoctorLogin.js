@@ -10,6 +10,8 @@ function DoctorLogin() {
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
     const { setUser } = useAuth(); // Use context
+    const API_URL = import.meta.env.VITE_API_URL;
+
 
     const loginSchema = yup.object().shape({
         email: yup.string().email("Invalid email format").required('Email is required'),
@@ -25,7 +27,7 @@ function DoctorLogin() {
         onSubmit: async (values) => {
             setLoading(true); // Start loading
             try {
-                const response = await fetch(`/api/doctorlogin`, {
+                const response = await fetch(`${API_URL}/api/doctorlogin`, {
                     method: "POST",
                     credentials: 'include',
                     headers: {

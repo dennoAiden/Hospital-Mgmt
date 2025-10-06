@@ -13,11 +13,13 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [role, setRole] = useState(null);
     const [loading, setLoading] = useState(true); 
+    const API_URL = import.meta.env.VITE_API_URL;
+
 
     useEffect(() => {
         const fetchSession = async () => {
             try {
-                const response = await fetch(`/api/check_session`, {
+                const response = await fetch(`${API_URL}/api/check_session`, {
                     method: 'GET',
                     credentials: 'include',
                 });

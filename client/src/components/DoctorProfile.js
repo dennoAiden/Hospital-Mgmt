@@ -10,9 +10,11 @@ const DoctorProfile = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [showAppointmentForm, setShowAppointmentForm] = useState(false); 
+  const API_URL = import.meta.env.VITE_API_URL;
+
 
   useEffect(() => {
-    fetch(`/api/doctors/${doctorId}`)
+    fetch(`${API_URL}/api/doctors/${doctorId}`)
       .then(response => response.json())
       .then(data => setDoctor(data))
       .catch(error => console.error('Error fetching doctor profile:', error));
