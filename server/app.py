@@ -231,7 +231,7 @@ class AppointmentBooking(Resource):
         data = request.get_json()
 
         doctor_id = data.get('doctorId')
-        patient_id = session.get('user_id')  
+        patient_id = data.get('patientId') or session.get('user_id')  
         date = data.get('date')
         time = data.get('time')
         medical_records = data.get('medical_records', "None")

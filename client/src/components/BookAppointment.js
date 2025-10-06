@@ -39,6 +39,7 @@ const BookAppointment = () => {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(appointmentData),
+                    credentials: 'include',
                 });
 
                 if (response.ok) {
