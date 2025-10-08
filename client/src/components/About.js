@@ -1,76 +1,35 @@
+// About.js
 import React from "react";
-// import Slider from "react-slick";
-import Navbar from "./Navbar"; 
-import Footer from "./Footer"; 
-
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 function About() {
-// const settings = {
-//     dots: true,
-//     infinite: true,
-//     speed: 500,
-//     slidesToShow: 1,
-//     slidesToScroll: 1,
-//     autoplay: true,
-//     autoplaySpeed: 3000,
-//   };
-
   return (
-    <div>
-      <section className="about-section">
-        <Navbar />
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <section className="flex-1 bg-gray-50 py-10 px-6 md:px-20">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6 text-center">About Us</h1>
 
-        {/* <div className="slideshow-container">
-          <Slider {...settings}>
+          <div className="space-y-6">
             <div>
-              <img src="/images/image1.jpg" alt="Slide 1" className="slide-image" />
+              <h2 className="text-xl font-semibold text-blue-800 mb-2">Our Mission</h2>
+              <p className="text-gray-700">Providing compassionate care, groundbreaking treatments, and a healing touch — because your health is our mission.</p>
             </div>
             <div>
-              <img src="/images/image2.jpg" alt="Slide 2" className="slide-image" />
+              <h2 className="text-xl font-semibold text-blue-800 mb-2">Team Mantra</h2>
+              <p className="text-gray-700">Together, we’re the heartbeat of healthcare, every patient, every day.</p>
             </div>
             <div>
-              <img src="/images/image3.jpg" alt="Slide 3" className="slide-image" />
-            </div>
-          </Slider>
-        </div> */}
-
-        <div className="about-container">
-          <div className="about-content">
-            <h1 className="about-title">About Us</h1>
-
-            {/* Mission Statement */}
-            <div className="about-block">
-              <h2 className="about-heading">Our Mission</h2>
-              <p className="about-text">
-                Providing compassionate care, groundbreaking treatments, and a healing touch — because your health is our mission.
-              </p>
-            </div>
-
-            {/* Team Mantra */}
-            <div className="about-block">
-              <h2 className="about-heading">Team Mantra</h2>
-              <p className="about-text">
-                Together, we’re the heartbeat of healthcare, every patient, every day.
-              </p>
-            </div>
-
-            {/* Vision Statement */}
-            <div className="about-block">
-              <h2 className="about-heading">Our Vision</h2>
-              <p className="about-text">
-                To lead the future of healthcare with cutting-edge innovation, a healthier community, and a patient-centered approach that redefines medical excellence.
-              </p>
+              <h2 className="text-xl font-semibold text-blue-800 mb-2">Our Vision</h2>
+              <p className="text-gray-700">To lead the future of healthcare with innovation and patient-centered excellence.</p>
             </div>
           </div>
         </div>
-
       </section>
-
-      {/* Footer */}
       <Footer />
     </div>
   );
 }
 
 export default About;
-
