@@ -150,34 +150,23 @@ class PatientSignup(Resource):
     def post(self):
         data = request.get_json()
 
-        try:
-            new_patient = Patient(
-                first_name=data.get('first_name'),
-                last_name=data.get('last_name'),
-                age=data.get('age'),
-                gender=data.get('gender'),
-                email=data.get('email'),
-                phone_number=data.get('phone_number'),
-                password=data.get('password')
-            )
+        new_patient = Patient(
+            first_name=data.get('first_name'),
+            last_name=data.get('last_name'),
+            email=data.get('email'),
+            age=int(data.get('age')),
+            phone_number=data.get('phone_number'),
+            gender=data.get('gender'),
+            password=bcrypt.generate_password_hash(data.get('password')).decode('utf-8')
+        )
 
+        try:
             db.session.add(new_patient)
             db.session.commit()
-
-            return {'message': 'Signup successful!'}, 201
-
-        except IntegrityError as e:
-            db.session.rollback()
-            # Check for duplicate email constraint violation
-            if 'patients_email_key' in str(e.orig):
-                return {'error': 'Email already exists'}, 400
-            else:
-                return {'error': 'Database integrity error'}, 400
-
+            return new_patient.to_dict(), 201
         except Exception as e:
             db.session.rollback()
-            print(str(e))
-            return {'error': 'Something went wrong. Please try again later.'}, 500
+            return {"error": str(e)}, 500
 
 class PatientLogin(Resource):
     def post(self):
