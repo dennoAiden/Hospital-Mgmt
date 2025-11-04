@@ -164,9 +164,17 @@ class PatientSignup(Resource):
             db.session.add(new_patient)
             db.session.commit()
             return new_patient.to_dict(), 201
+
+        except IntegrityError as e:
+            db.session.rollback()
+            # Check if the integrity error is a unique violation (duplicate email)
+            if isinstance(e.orig, UniqueViolation):
+                return {"error": "Email already exists"}, 400
+            return {"error": "Database integrity error"}, 400
+
         except Exception as e:
             db.session.rollback()
-            return {"error": str(e)}, 500
+            return {"error": "An unexpected error occurred"}, 500
 
 class PatientLogin(Resource):
     def post(self):
